@@ -109,8 +109,14 @@ async def new_article(title: str = Form(...), body: str = Form(...)):
     :param body:
     :return: RedirectResponse to admin page
     """
-    # Add new post to the database
-    add_post(title, body)
+    # Check if article with the same title exists
+    try:
+        existing_post = get_post_by_title(title)
+        # If found, redirect back to admin without adding
+        return RedirectResponse(url="/admin", status_code=303)
+    except ValueError:
+        # Add new post to the database
+        add_post(title, body)
     return RedirectResponse(url="/admin", status_code=303)
 
 if __name__ == "__main__":
