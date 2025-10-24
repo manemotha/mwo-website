@@ -1,10 +1,10 @@
 :root {
     /* margins & paddings */
     --page-margin: 0px 190px 0px 190px;
-    --mobile-page-margin: 0px 50px 0px 50px;
+    --mobile-page-margin: 0px 30px 0px 30px;
 
     /* colors */
-    --contentArea-background: whitesmoke;
+    --contentArea-background: white;
     --navbar-background: #292929;
     --dark-text-color: #202020;
     --white-text-color: white;
@@ -161,6 +161,7 @@ body {
     margin: var(--page-margin);
     margin-top: 170px;
     margin-bottom: 170px;
+    background-color: var(--contentArea-background);
 }
 
 /* section title */
@@ -258,6 +259,7 @@ body {
     font-family: Roboto-Regular, sans-serif;
     line-height: 1.5;
     overflow: hidden;
+    white-space: pre-wrap;
     display: -webkit-box;
     -webkit-line-clamp: 9;
     -webkit-box-orient: vertical;
@@ -346,4 +348,11 @@ body {
         margin-top: 70px;
         margin-bottom: 70px;
     }
+
+    .postContainer {
+        padding: 0px;
+        background-color: transparent;
+    }
+
+
 }

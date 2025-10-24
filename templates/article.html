@@ -23,6 +23,7 @@
 
     .postBody {
         display: block;
+        white-space: pre-wrap;
     }
 
     @media screen and (max-width: 800px) {
@@ -51,12 +52,13 @@
         <a class="linkBtn" onclick="history.back()">Back</a>
     </div>
 </header>
+
 <main class="contentArea" style="height: 100%;">
     <div class="content">
         <div class="articleContainer">
             <h5 class="postTitle">{{POST.title}}</h5>
             <h5 class="postDate">{{POST.date}}</h5>
-            <p class="postBody">{{POST.body}}</p>
+            <p class="postBody" style="color: black">{{POST.body}}</p>
         </div>
     </div>
 </main>

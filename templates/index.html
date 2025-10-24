@@ -82,9 +82,9 @@
 
     <!-- NEWS -->
     <div class="newsContainer">
-        <div style="display: grid; grid-template-columns: 100fr max-content; align-items: center; width: 100%">
+        <div style="display: grid; grid-template-columns: 100fr max-content; align-items: center; width: 100%; margin-bottom: 20px">
             <h5 class="sectionTitle" style="margin: 0px">News</h5>
-            <a href="/articles" class="linkText">More articles</a>
+            <a href="/articles" class="linkText">View more articles</a>
         </div>
         {% if NEWS is not none()  %}
             <div class="newsLayout">
@@ -97,7 +97,7 @@
                 {% endfor %}
             </div>
         {% else %}
-            <h5 class="noNewsNotice">News published will show here...</h5>
+            <h5 class="noNewsNotice">Published articles will show here...</h5>
         {% endif %}
     </div>
 </div>
