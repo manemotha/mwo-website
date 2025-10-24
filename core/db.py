@@ -20,6 +20,8 @@ def get_posts() -> list:
     if isinstance(posts, list) and len(posts) > 0:
         # Sort posts by date in descending order
         posts.sort(key=lambda x: x['date'], reverse=True)
+        for post in posts:
+            post['title'] = post['title'].title()
         return posts
 
     raise ValueError("No posts found in the database.")
@@ -30,5 +32,7 @@ def get_post_by_title(title: str) -> dict:
     post = Query()
     result = posts_table.search(post.title == title.upper())
     if result:
-        return result[0]
+        article = result[0]
+        article['title'] = article['title'].title()
+        return article
     raise ValueError(f"No post found with title: {title}")
