@@ -10,10 +10,35 @@
 <body>
 
 <style>
-    input, textarea {
-        border: none;
+    .inputField {
+        border: 2px solid lightgray;
+        outline: none;
+        border-radius: 5px;
+        padding: 8px;
         font-weight: normal;
-        font-family: Roboto-Light;
+        font-size: 16px;
+        font-family: Roboto-Regular, sans-serif;
+        transition: 0.2s ease;
+    }
+    .inputField:focus {
+        text-decoration: none;
+        border: 2px solid var(--primary-color);
+        transition: 0.2s ease;
+    }
+
+    .formContainer {
+        display: grid;
+        gap: 20px;
+    }
+    .formSectionContainer {
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .formSectionHint {
+        font-family: Roboto-Light, sans-serif;
+        font-weight: normal;
+        color: gray;
+        margin: 0px 0px 10px 0px;
     }
 </style>
 
@@ -36,14 +61,27 @@
 
 <main class="contentArea">
 
-    <h5 style="font-size: 24px; font-family: Roboto-Regular; font-weight: normal; color: var(--secondary-text-color); margin: var(--page-margin); margin-top: 50px; margin-bottom: 50px">New post</h5>
+    <div class="content" style="margin-top: 40px">
+        <h5 style="font-size: 24px; font-family: Roboto-Regular; font-weight: normal; color: black; margin-bottom: 30px">New article</h5>
 
-    <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; margin: var(--page-margin)">
+        <form class="formContainer" action="/admin/add_post" method="post">
 
-        <form action="/admin/add_post" method="post" style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 400px;">
-            <input type="text" name="title" placeholder="Title" required style="padding: 8px; font-size: 16px;">
-            <textarea name="body" placeholder="body" required style="padding: 8px; font-size: 16px; height: 100px;"></textarea>
-            <button type="submit" style="padding: 10px; font-size: 16px; background-color: var(--primary-color); color: white; border: none; cursor: pointer;">Add Post</button>
+            <!-- TITLE FIELD -->
+            <nav class="formSectionContainer">
+                <h5 class="formSectionHint">Use unique title for each article</h5>
+                <input class="inputField" type="text" name="title" placeholder="Title" required>
+            </nav>
+
+            <!-- BODY FIELD -->
+            <textarea class="inputField" name="body" placeholder="What's happening?" required style="height: 300px; resize: none"></textarea>
+            <button type="submit" style="
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;">Publish</button>
         </form>
     </div>
 
