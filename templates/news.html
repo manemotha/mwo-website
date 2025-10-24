@@ -28,7 +28,7 @@
         for (let i = 0; i < postContainers.length; i++) {
             postContainers[i].addEventListener('click', function() {
                 let postTitle = this.id;
-                window.location.href = '/news/' + encodeURIComponent(postTitle);
+                window.location.href = '/article/' + encodeURIComponent(postTitle);
             });
         }
     })

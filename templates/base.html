@@ -24,7 +24,7 @@
     <!-- links -->
     <div style="display: flex; gap: 30px">
         <a href="/" class="linkBtn" id="homeBtn">Home</a>
-        <a href="/news" class="linkBtn" id="newsBtn">News</a>
+        <a href="/articles" class="linkBtn" id="newsBtn">News</a>
         <a href="/about" class="linkBtn" id="aboutBtn">About</a>
     </div>
 </header>
@@ -50,7 +50,7 @@
     function selectedLinkBtn() {
         if (window.location.pathname === "/") {
             document.getElementById("homeBtn").classList.add("selectedLinkBtn");
-        } else if (window.location.pathname === "/news") {
+        } else if (window.location.pathname === "/articles") {
             document.getElementById("newsBtn").classList.add("selectedLinkBtn");
         } else if (window.location.pathname === "/about") {
             document.getElementById("aboutBtn").classList.add("selectedLinkBtn");
