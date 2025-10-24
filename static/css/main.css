@@ -70,6 +70,7 @@ body {
     font-family: Roboto-Light, sans-serif;
     color: darkgray;
     transition: 0.3s ease;
+    cursor: pointer;
 }
 .linkBtn:hover {
     color: lightgray;
@@ -234,6 +235,8 @@ body {
     padding: 30px;
     height: max-content;
     width: 100fr;
+    border: 2px solid transparent;
+    transition: 0.2s ease;
 }
 .postTitle {
     font-size: 23px;

@@ -29,18 +29,23 @@
 
 </style>
 
-<header class="navbar" style="grid-template-columns: max-content">
+<header class="navbar" style="grid-template-columns: max-content auto">
     <!-- trademark -->
     <a href="/" style="text-decoration: none">
         <div style="display: flex; align-items: center; gap: 10px">
-        <img class="logo" src="../static/images/logo.png">
-        <h5 class="trademark" style="
-        text-wrap: nowrap;
-        color: var(--white-text-color);
-        font-weight: var(--content-font-weight); font-family: Roboto-Regular, sans-serif;"
-        >{{ORGANIZATION_NAME}}</h5>
-    </div>
+            <img class="logo" src="../static/images/logo.png">
+            <h5 class="trademark" style="
+            text-wrap: nowrap;
+            color: var(--white-text-color);
+            font-weight: var(--content-font-weight); font-family: Roboto-Regular, sans-serif;"
+            >{{ORGANIZATION_NAME}}</h5>
+        </div>
     </a>
+
+    <!-- links -->
+    <div style="display: flex; gap: 30px; width: 100%; justify-content: flex-end">
+        <a class="linkBtn" onclick="history.back()">Back</a>
+    </div>
 </header>
 <main class="contentArea" style="height: 100vh;">
     <div class="content">
