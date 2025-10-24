@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- TITLE -->
+<title>MWO - {{title}}</title>
+
+<!-- CONTENT -->
+<div class="content" style="margin-top: 40px">
+    {% if NEWS is not none()  %}
+        <div class="newsLayout">
+            {% for POST in NEWS %}
+                <div class="postContainer" id="{{POST.title}}" style="max-height: none">
+                    <h5 class="postTitle">{{POST.title}}</h5>
+                    <h5 class="postDate">{{POST.date}}</h5>
+                    <p class="postBody">{{POST.body}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h5 class="noNewsNotice">News published will show here...</h5>
+    {% endif %}
+</div>
+
+<script>
+    document.addEventListener('click', function() {
+        let postContainers = document.getElementsByClassName('postContainer');
+        for (let i = 0; i < postContainers.length; i++) {
+            postContainers[i].addEventListener('click', function() {
+                let postTitle = this.id;
+                window.location.href = '/news/' + encodeURIComponent(postTitle);
+            });
+        }
+    })
+</script>
+{% endblock %}

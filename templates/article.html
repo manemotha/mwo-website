@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MWO - {{title}}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Roboto-Light, sans-serif;
+        background-color: var(--contentArea-background);
+    }
+
+    .content {
+        margin-top: 50px;
+    }
+
+    @media screen and (max-width: 800px) {
+        .content {
+            margin: 50px;
+        }
+    }
+
+</style>
+
+<header class="navbar" style="grid-template-columns: max-content">
+    <!-- trademark -->
+    <a href="/" style="text-decoration: none">
+        <div style="display: flex; align-items: center; gap: 10px">
+        <img class="logo" src="../static/images/logo.png">
+        <h5 class="trademark" style="
+        text-wrap: nowrap;
+        color: var(--white-text-color);
+        font-weight: var(--content-font-weight); font-family: Roboto-Regular, sans-serif;"
+        >{{ORGANIZATION_NAME}}</h5>
+    </div>
+    </a>
+</header>
+<main class="contentArea" style="height: 100vh;">
+    <div class="content">
+        <div class="articleContainer">
+            <h5 class="postTitle">{{POST.title}}</h5>
+            <h5 class="postDate">{{POST.date}}</h5>
+            <p class="postBody">{{POST.body}}</p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

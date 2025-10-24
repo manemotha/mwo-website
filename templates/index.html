@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<title>MWO - {{title}}</title>
+
+<!-- INTRODUCTION -->
+<div class="introduction">
+
+    <div class="introLayout">
+
+        <!-- trademark -->
+        <h1 class="introTrademark">
+            MASIQHAKAZE
+            <br>
+            <span style="color: var(--primary-color); font-weight: bold">WOMEN</span>
+            <br>
+            ORGANISATION
+        </h1>
+
+        <!-- summary -->
+        <p class="introParagraph">
+            We are an organisation with an aim to conduct awareness campaigns on Cancer and Gender Based Violence, to provide cooked meals to needy learners after school and to do Boys/Men championing change and protective workshop.
+        </p>
+
+        <!-- more button -->
+        <a class="moreBtn" href="/about">More</a>
+
+    </div>
+
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+    <!-- OUR MISSION -->
+    <div class="ourMissionContainer">
+        <div style="display: compact">
+
+            <h5 class="sectionTitle" style="margin: 0px">
+                Our Mission
+            </h5> {# title #}
+
+            <p class="ourMissionParagraph">
+                At Masiqhakaze Women Organisation, our mission is to empower, uplift, and support women and communities by creating opportunities for growth, education, and sustainable development. We are committed to breaking barriers that limit potential, providing resources that inspire self-reliance, and building safe spaces where every voice is heard and valued. Through advocacy, skills development, and community-driven initiatives, we strive to foster equality, dignity, and hope - ensuring that no one is left behind.
+            </p> {# paragraph #}
+
+        </div>
+
+        <div>
+            <img class="ourMissionImage" src="static/images/team.webp">
+        </div>
+    </div>
+
+    <!-- MEMBERS -->
+    <div class="membersContainer">
+        <h5 class="sectionTitle">Organisation Members</h5>
+
+        {# MEMBER FOR LOOP #}
+        {% for MEMBER in MEMBERS %}
+            <div class="memberItem">
+                <div style="
+                width: 50px;
+                height: 50px;
+                background-size: cover;
+                background-position: center;
+                background-image: url('static/images/team/{{MEMBER.img}}');
+                border-radius: 100px;
+                background-repeat: no-repeat;">
+                </div>
+
+                <div style="display: compact; gap: 0px;">
+                    {# NAME #}
+                    <h5 style="font-weight: normal; font-size: 17px">{{MEMBER.name}}</h5>
+                    {# STATUS #}
+                    <h5 style="font-family: 'Roboto-Light'; font-weight: lighter; font-size: var(--content-font-size)-9; margin-top: -30px; color: var(--secondary-text-color)">{{MEMBER.role}}</h5>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- NEWS -->
+    <div class="newsContainer">
+        <div style="display: grid; grid-template-columns: 100fr max-content; align-items: center; width: 100%">
+            <h5 class="sectionTitle" style="margin: 0px">News</h5>
+            <a href="/news" class="linkText">More articles</a>
+        </div>
+        {% if NEWS is not none()  %}
+            <div class="newsLayout">
+                {% for POST in NEWS %}
+                    <div class="postContainer" style="max-height: none">
+                        <h5 class="postTitle">{{POST.title}}</h5>
+                        <h5 class="postDate">{{POST.date}}</h5>
+                        <p class="postBody">{{POST.body}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h5 class="noNewsNotice">News published will show here...</h5>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

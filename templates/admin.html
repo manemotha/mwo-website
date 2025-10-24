@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MWO - {{title}}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<style>
+    input, textarea {
+        border: none;
+        font-weight: normal;
+        font-family: Roboto-Light;
+    }
+</style>
+
+<header class="navbar">
+    <!-- trademark -->
+    <div style="display: flex; align-items: center; gap: 10px">
+        <img class="logo" src="static/images/logo.png">
+        <h5 class="trademark" style="
+        text-wrap: nowrap;
+        color: var(--white-text-color);
+        font-weight: var(--content-font-weight)"
+        >{{ORGANIZATION_NAME}}</h5>
+    </div>
+
+    <!-- links -->
+    <div style="display: flex; gap: 30px; justify-items: right">
+        <a href="/" class="linkBtn" id="homeBtn">Close</a>
+    </div>
+</header>
+
+<main class="contentArea">
+
+    <h5 style="font-size: 24px; font-family: Roboto-Regular; font-weight: normal; color: var(--secondary-text-color); margin: var(--page-margin); margin-top: 50px; margin-bottom: 50px">New post</h5>
+
+    <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; margin: var(--page-margin)">
+
+        <form action="/admin/add_post" method="post" style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 400px;">
+            <input type="text" name="title" placeholder="Title" required style="padding: 8px; font-size: 16px;">
+            <textarea name="body" placeholder="body" required style="padding: 8px; font-size: 16px; height: 100px;"></textarea>
+            <button type="submit" style="padding: 10px; font-size: 16px; background-color: var(--primary-color); color: white; border: none; cursor: pointer;">Add Post</button>
+        </form>
+    </div>
+
+</main>
+
+</body>
+</html>
