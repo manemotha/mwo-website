@@ -236,7 +236,7 @@ body {
     width: 100fr;
 }
 .postTitle {
-    font-size: 25px;
+    font-size: 23px;
     font-weight: normal;
     font-family: Roboto-Bold, sans-serif;
     margin: 0px;
@@ -246,7 +246,7 @@ body {
     font-family: Roboto-Regular, sans-serif;
     font-weight: lighter;
     color: var(--secondary-text-color);
-    margin: 7px 0px 0px 0px;
+    margin: 10px 0px 0px 0px;
 }
 .postBody {
     font-size: 18px;
