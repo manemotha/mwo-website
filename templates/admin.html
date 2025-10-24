@@ -10,6 +10,23 @@
 <body>
 
 <style>
+    .content {
+        gap: 30px;
+        display: grid;
+        grid-template-columns: 100fr 100fr;
+        margin-top: 0px;
+    }
+
+    /* MEDIA QUERIES */
+    @media screen and (max-width: 1050px) {
+        .content {
+            grid-template-columns: auto;
+        }
+    }
+
+    .adminSectionContainer {
+
+    }
     .inputField {
         border: 2px solid lightgray;
         outline: none;
@@ -81,47 +98,53 @@
 
 <main class="contentArea">
 
-    <div class="content" style="margin-top: 40px">
-        <h5 style="font-size: 24px; font-family: Roboto-Regular; font-weight: normal; color: black; margin-bottom: 30px">New article</h5>
+    <div class="content">
 
-        <form class="formContainer" action="/admin/add_post" method="post">
+        <!-- ADMIN SECTION CONTAINER -->
+        <div class="adminSectionContainer">
+            <h5 style="font-size: 24px; font-family: Roboto-Regular; font-weight: normal; color: black; margin-bottom: 30px">Write article</h5>
 
-            <!-- TITLE FIELD -->
-            <nav class="formSectionContainer">
-                <h5 class="formSectionHint">Use unique title for each article</h5>
-                <input class="inputField" type="text" name="title" placeholder="Title" required>
-            </nav>
+            <form class="formContainer" action="/admin/add_post" method="post">
 
-            <!-- BODY FIELD -->
-            <textarea class="inputField" name="body" placeholder="What's happening?" required style="height: 300px; resize: none"></textarea>
-            <button type="submit" style="
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 5px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            cursor: pointer;">Publish</button>
-        </form>
+                <!-- TITLE FIELD -->
+                <nav class="formSectionContainer">
+                    <h5 class="formSectionHint">Use unique title for each article</h5>
+                    <input class="inputField" type="text" name="title" placeholder="Title" required>
+                </nav>
+
+                <!-- BODY FIELD -->
+                <textarea class="inputField" name="body" placeholder="What's happening?" required style="height: 300px; resize: none"></textarea>
+                <button type="submit" style="
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 5px;
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                cursor: pointer;">Publish</button>
+            </form>
+        </div>
 
         {% if NEWS is not none()  %}
-            <!-- SECTION TITLE -->
-            <h5 style="font-size: 24px; font-family: Roboto-Regular, sans-serif; font-weight: normal; color: black; margin-bottom: 30px">My Articles</h5>
+            <div class="adminSectionContainer">
+                <!-- SECTION TITLE -->
+                <h5 style="font-size: 24px; font-family: Roboto-Regular, sans-serif; font-weight: normal; color: black; margin-bottom: 30px">Delete article</h5>
 
-            <!-- DELETE ARTICLE SECTION-->
-            <div style="display: grid; grid-template-columns: auto; gap: 20px">
-                <h5 class="formSectionHint" style="margin-bottom: -10px">Permanently delete an article. <b>Permanent action!</b></h5>
+                <!-- DELETE ARTICLE SECTION-->
+                <div style="display: grid; grid-template-columns: auto; gap: 20px">
+                    <h5 class="formSectionHint" style="margin-bottom: -10px">Permanently delete an article. <b>Permanent action!</b></h5>
 
-                {% for POST in NEWS %}
-                    <form class="adminPostContainer" style="text-decoration: none; color: inherit" method="POST" action="/delete/article/{{POST.title}}">
-                        <!-- ADMIN POST TEXT|TITLE -->
-                        <a class="adminPostTitle"><span style="font-size: 14px; color: gray">{{POST.date[0:10]}}</span> - {{POST.title}}
-                        </a>
-                        <!-- DELETE ARTICLE BUTTON-->
-                        <button type="submit" class="linkText" style="border: none; padding: 0px 30px 0px 30px; background-color: transparent">Delete</button>
-                    </form>
-                {% endfor %}
+                    {% for POST in NEWS %}
+                        <form class="adminPostContainer" style="text-decoration: none; color: inherit" method="POST" action="/delete/article/{{POST.title}}">
+                            <!-- ADMIN POST TEXT|TITLE -->
+                            <a class="adminPostTitle"><span style="font-size: 14px; color: gray">{{POST.date[0:10]}}</span> - {{POST.title}}
+                            </a>
+                            <!-- DELETE ARTICLE BUTTON-->
+                            <button type="submit" class="linkText" style="border: none; padding: 0px 30px 0px 30px; background-color: transparent">Delete</button>
+                        </form>
+                    {% endfor %}
 
+                </div>
             </div>
         {% else %}
             <h5 class="noNewsNotice">Published articles will show here...</h5>

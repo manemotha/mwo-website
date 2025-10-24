@@ -145,14 +145,21 @@ body {
 .moreBtn {
     height: 45px;
     width: min-content;
+    border-radius: var(--border-radius);
     background-color: white;
-    border: none;
-    font-size: var(--content-font-size);
+    font-size: 17px;
+    border: 2px solid transparent;
     padding: 0px 35px 0px 35px;
     justify-self: center;
     align-content: center;
     text-decoration: none;
     color: var(--primary-color);
+    transition: 0.2s ease;
+}
+.moreBtn:hover {
+    border: 2px solid var(--primary-color);
+    text-decoration: underline;
+    transition: 0.2s ease;
 }
 .introduction div .moreBtn {
     margin-top: 70px;
