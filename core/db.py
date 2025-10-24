@@ -1,6 +1,6 @@
-from tinydb import TinyDB, Query
 import datetime
-import asyncio
+from tinydb import TinyDB, Query
+from core.formatters import iso_format_datetime
 
 db = TinyDB('db.json')
 
@@ -10,7 +10,7 @@ def add_post(title: str, body: str):
     posts_table.insert({
         'title': title.upper(),
         'body': body,
-        'date': str(datetime.datetime.now()),
+        'date': str(iso_format_datetime(datetime.datetime.now())),
     })
 
 # Get all posts from the database
