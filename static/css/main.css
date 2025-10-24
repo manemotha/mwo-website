@@ -47,6 +47,7 @@ html, body {
 body {
     display: grid;
     grid-template-rows: 70px auto;
+    min-width: 400px;
 }
 
 
@@ -327,7 +328,7 @@ body {
 
     /* INDEX.html */
     .introLayout {
-        margin: var(--mobile-page-margin);
+        margin: 0px;
     }
     .introTrademark {
         padding: 0px 40px 0px 40px;
