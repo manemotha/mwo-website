@@ -95,7 +95,7 @@ body {
     cursor: pointer;
 }
 .linkText:hover {
-    font-weight: bold;
+    text-decoration: underline;
 }
 
 .footer {
