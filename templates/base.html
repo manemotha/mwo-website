@@ -47,7 +47,7 @@
 
 
 <script>
-    function selectedLinkBtn() {
+    document.addEventListener("DOMContentLoaded", function (){
         if (window.location.pathname === "/") {
             document.getElementById("homeBtn").classList.add("selectedLinkBtn");
         } else if (window.location.pathname === "/articles") {
@@ -55,9 +55,7 @@
         } else if (window.location.pathname === "/about") {
             document.getElementById("aboutBtn").classList.add("selectedLinkBtn");
         }
-    }
-
-    document.addEventListener("DOMContentLoaded", selectedLinkBtn);
+    });
 </script>
 </body>
 </html>
