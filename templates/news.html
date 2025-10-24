@@ -6,6 +6,10 @@
 <title>MWO - {{title}}</title>
 
 <style>
+    .postContainer {
+        width: 100fr;
+        height: 100fr;
+    }
     .postContainer:hover {
         border: 2px solid var(--primary-color);
         cursor: pointer;
@@ -15,20 +19,41 @@
         opacity: 0.5;
         transition: 0.1s ease;
     }
+    .postTitle {
+        overflow: hidden;
+        white-space: pre-wrap;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-weight: normal;
+    }
+
+    @media screen and (max-width: 700px) {
+        .postContainer {
+            padding: 40px 0px 30px 0px;
+            border-radius: 0px;
+            background-color: var(--contentArea-background)
+        }
+        .newsLayout {
+            gap: 1px;
+            background-color: lightgray;
+        }
+
+    }
 </style>
 
 <!-- CONTENT -->
-<div class="content" style="margin-top: 40px">
+<div class="content" style="margin-top: 10px">
     {% if NEWS is not none()  %}
         <div class="newsLayout">
             {% for POST in NEWS %}
-                <a href="/article/{{POST.title}}" style="text-decoration: none; color: inherit">
-                    <div class="postContainer" id="{{POST.title}}" style="max-height: none">
+                <div class="postContainer" id="{{POST.title}}" style="max-height: none;">
+                    <a href="/article/{{POST.title}}" style="text-decoration: none; color: inherit">
                         <h5 class="postTitle">{{POST.title}}</h5>
                         <h5 class="postDate">{{POST.date}}</h5>
                         <p class="postBody">{{POST.body}}</p>
-                    </div>
-                </a>
+                    </a>
+                </div>
             {% endfor %}
         </div>
     {% else %}

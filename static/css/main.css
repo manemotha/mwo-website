@@ -15,7 +15,7 @@
     --grayish-background: #eeeeee;
 
     /* fonts */
-    --content-font-size: 20px;
+    --content-font-size: 18px;
     --content-font-weight: 300;
     /* title */
     --title-font-size: 23px;
@@ -123,6 +123,7 @@ body {
     background-image: url("/static/images/introduction_bg.jpg");
     display: grid;
     align-items: center;
+    min-height: min-content;
 }
 .introLayout {
     display: grid;
@@ -219,7 +220,7 @@ body {
     display: grid;
     grid-template-columns: auto;
     grid-auto-rows: auto;
-    margin-top: 100px;
+    margin-top: 30px;
     gap: 20px;
 }
 .memberItem {
@@ -266,7 +267,7 @@ body {
     margin: 10px 0px 0px 0px;
 }
 .postBody {
-    font-size: 18px;
+    font-size: var(--content-font-size);
     color: var(--content-color);
     font-weight: normal;
     font-family: Roboto-Regular, sans-serif;
@@ -362,10 +363,16 @@ body {
         margin-bottom: 70px;
     }
 
-    .postContainer {
-        padding: 0px;
-        background-color: transparent;
+    .titleLayoutConfig {
+        margin-bottom: 0px;
     }
-
-
+    .postContainer {
+        padding: 40px 0px 30px 0px;
+        border-radius: 0px;
+        background-color: var(--contentArea-background)
+    }
+    .newsLayout {
+        gap: 1px;
+        background-color: lightgray;
+    }
 }
