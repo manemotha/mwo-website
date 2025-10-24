@@ -14,6 +14,17 @@ def add_post(title: str, body: str):
     })
     db.close()
 
+# Delete a post by title
+def delete_post(title: str):
+    try:
+        db = TinyDB('db.json')
+        posts_table = db.table('posts')
+        post = Query()
+        posts_table.remove(post.title == title.upper())
+        db.close()
+    except Exception as error:
+        raise error
+
 # Get all posts from the database
 def get_posts() -> list:
     db = TinyDB('db.json')

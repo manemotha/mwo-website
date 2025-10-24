@@ -2,6 +2,7 @@
     /* margins & paddings */
     --page-margin: 0px 190px 0px 190px;
     --mobile-page-margin: 0px 30px 0px 30px;
+    --border-radius: 5px;
 
     /* colors */
     --contentArea-background: white;
@@ -71,6 +72,7 @@ body {
     color: darkgray;
     transition: 0.3s ease;
     cursor: pointer;
+    border-radius: var(--border-radius);
 }
 .linkBtn:hover {
     color: lightgray;
@@ -174,6 +176,7 @@ body {
 
 /* news notice message */
 .noNewsNotice {
+    border-radius: var(--border-radius);
     height: 60px;
     background-color: white;
     border: 2px solid lightgray;
@@ -193,6 +196,7 @@ body {
 }
 .ourMissionImage {
     width: 400px;
+    border-radius: var(--border-radius);
 }
 .ourMissionParagraph {
     font-size: var(--content-font-size);
@@ -215,6 +219,7 @@ body {
     display: flex;
     align-items: center;
     padding: 0px 15px 0px 15px;
+    border-radius: var(--border-radius);
     background-color: var(--grayish-background);
     gap: 15px;
 }
@@ -230,6 +235,7 @@ body {
     gap: 20px;
 }
 .postContainer {
+    border-radius: var(--border-radius);
     background-color: var(--grayish-background);
     display: inline-grid;
     grid-template-rows: min-content auto;

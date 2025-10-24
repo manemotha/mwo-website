@@ -79,6 +79,15 @@ async def get_article(title: str):
         }
     )
 
+@app.post("/delete/article/{title}")
+async def delete_article(title: str):
+    try:
+        from core.db import delete_post
+        delete_post(title)
+        return RedirectResponse(url="/admin", status_code=303)
+    except Exception:
+        return {"error": f"Error deleting article: {title}"}
+
 @app.get("/about")
 async def about():
     return template.TemplateResponse(
@@ -92,11 +101,19 @@ async def about():
 
 @app.get("/admin")
 async def admin():
+
+    # List all news articles/posts
+    try:
+        posts = get_posts()
+    except ValueError:
+        posts = None
+
     return template.TemplateResponse(
         name    = "admin.html",
         context = {
             "title": "Admin",
             "ORGANIZATION_NAME": ORGANIZATION_NAME,
+            "NEWS": posts,
             "request": {}
         }
     )

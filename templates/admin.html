@@ -13,7 +13,7 @@
     .inputField {
         border: 2px solid lightgray;
         outline: none;
-        border-radius: 5px;
+        border-radius: var(--border-radius);
         padding: 8px;
         font-weight: normal;
         font-size: 16px;
@@ -39,6 +39,26 @@
         font-weight: normal;
         color: gray;
         margin: 0px 0px 10px 0px;
+    }
+
+    .adminPostContainer {
+        height: 70px;
+        display: flex;
+        padding: 0px 0px 0px 20px;
+        border-radius: var(--border-radius);
+        background-color: var(--grayish-background);
+    }
+    .adminPostTitle {
+        align-self: center;
+        font-size: 16px;
+        overflow: hidden;
+        white-space: pre-wrap;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        font-weight: normal;
+        width: 100%;
+        font-family: Roboto-Regular, sans-serif;
     }
 </style>
 
@@ -83,9 +103,37 @@
             border: none;
             cursor: pointer;">Publish</button>
         </form>
+
+        {% if NEWS is not none()  %}
+            <!-- SECTION TITLE -->
+            <h5 style="font-size: 24px; font-family: Roboto-Regular, sans-serif; font-weight: normal; color: black; margin-bottom: 30px">My Articles</h5>
+
+            <!-- DELETE ARTICLE SECTION-->
+            <div style="display: grid; grid-template-columns: auto; gap: 20px">
+                <h5 class="formSectionHint" style="margin-bottom: -10px">Permanently delete an article. <b>Permanent action!</b></h5>
+
+                {% for POST in NEWS %}
+                    <form class="adminPostContainer" style="text-decoration: none; color: inherit" method="POST" action="/delete/article/{{POST.title}}">
+                        <!-- ADMIN POST TEXT|TITLE -->
+                        <a class="adminPostTitle"><span style="font-size: 14px; color: gray">{{POST.date[0:10]}}</span> - {{POST.title}}
+                        </a>
+                        <!-- DELETE ARTICLE BUTTON-->
+                        <button type="submit" class="linkText" style="border: none; padding: 0px 30px 0px 30px; background-color: transparent">Delete</button>
+                    </form>
+                {% endfor %}
+
+            </div>
+        {% else %}
+            <h5 class="noNewsNotice">Published articles will show here...</h5>
+        {% endif %}
     </div>
 
 </main>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function (){
+
+    });
+</script>
 </body>
 </html>
