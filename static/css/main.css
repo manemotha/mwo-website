@@ -68,6 +68,7 @@ body {
 .linkBtn {
     font-size: 14px;
     text-decoration: none;
+    width: max-content;
     font-family: Roboto-Light, sans-serif;
     color: darkgray;
     transition: 0.3s ease;
