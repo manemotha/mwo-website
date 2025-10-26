@@ -73,7 +73,7 @@
                     {# NAME #}
                     <h5 style="font-weight: normal; font-family: Roboto-Regular, sans-serif; font-size: 17px">{{MEMBER.name.title()}}</h5>
                     {# STATUS #}
-                    <h5 style="font-family: Roboto-Light, sans-serif; font-weight: normal; font-size: 17px; margin-top: -29px; color: var(--secondary-text-color)">{{MEMBER.role}}</h5>
+                    <h5 style="font-family: Roboto-Light, sans-serif; font-weight: normal; font-size: 15px; margin-top: -29px; color: var(--secondary-text-color)">{{MEMBER.role}}</h5>
                 </div>
             </div>
         {% endfor %}
@@ -82,15 +82,21 @@
 
     <!-- NEWS -->
     <div class="newsContainer">
-        <div style="display: grid; grid-template-columns: 100fr max-content; align-items: center; width: 100%; margin-bottom: 0px">
+        <div style="display: grid; grid-template-columns: 100fr max-content; align-items: center; width: 100%; height: 70px; border-bottom: 1px solid lightgray">
             <h5 class="sectionTitle" style="margin: 0px">News articles</h5>
             <a href="/articles" class="linkText" style="text-decoration: underline">More articles</a>
         </div>
         {% if NEWS is not none()  %}
             <div class="newsLayout">
                 {% for POST in NEWS %}
-                    <div class="postContainer" style="max-height: none">
-                        <h5 class="postTitle">{{POST.title}}</h5>
+                    <div class="postContainer" style="max-height: none; padding-left: 0px; padding-right: 0px;">
+                        <h5 class="postTitle" style="
+                        overflow: hidden;
+                        white-space: pre-wrap;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        font-weight: normal;">{{POST.title}}</h5>
                         <h5 class="postDate">{{POST.date}}</h5>
                         <p class="postBody">{{POST.body}}</p>
                     </div>

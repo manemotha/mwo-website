@@ -26,7 +26,7 @@ async def index():
 
     # Find two latest news articles/posts
     try:
-        posts = get_posts()[0:2]
+        posts = get_posts()[0:4]
     except ValueError:
         posts = None
 
