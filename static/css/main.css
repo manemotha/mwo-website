@@ -266,9 +266,9 @@ body {
 }
 .postBody {
     font-size: var(--content-font-size);
-    color: var(--content-color);
+    color: #202020;
     font-weight: normal;
-    font-family: Roboto-Regular, sans-serif;
+    font-family: "Times New Roman", Times, serif;
     line-height: 1.5;
     overflow: hidden;
     white-space: pre-wrap;
