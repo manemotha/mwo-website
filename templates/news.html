@@ -60,7 +60,11 @@
                 <div class="postContainer" id="{{POST.title}}" style="max-height: none;">
                     <a href="/article/{{POST.title}}" style="text-decoration: none; color: inherit">
                         <h5 class="postTitle">{{POST.title}}</h5>
-                        <h5 class="postDate">{{POST.date}}</h5>
+                        <!-- date -->
+                        <h5 class="postDate">
+                            <img src="../static/images/icons/link.png" style="width: 15px; margin: 0px 0px -1px 3px">
+                            {{POST.date}}
+                        </h5>
                         <p class="postBody">{{POST.body}}</p>
                     </a>
                 </div>
