@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MWO - {{title}}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<style>
+    .inputField {
+        border: 2px solid lightgray;
+        outline: none;
+        border-radius: var(--border-radius);
+        padding: 8px;
+        font-weight: normal;
+        font-size: 16px;
+        font-family: Roboto-Regular, sans-serif;
+        transition: 0.2s ease;
+    }
+    .inputField:focus {
+        text-decoration: none;
+        border: 2px solid var(--primary-color);
+        transition: 0.2s ease;
+    }
+
+    .formContainer {
+        justify-self: center;
+        width: 100%;
+        max-width: 350px;
+        display: grid;
+        gap: 20px;
+    }
+    .formSectionContainer {
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .formSectionHint {
+        font-family: Roboto-Regular, sans-serif;
+        font-weight: normal;
+        font-size: 15px;
+        color: var(--content-color);
+        margin: 10px 0px 10px 0px;
+    }
+
+    .submitButton {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: var(--border-radius);
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .formMarginLayout {
+        margin: 0 100px 0 100px;
+    }
+
+    /* MEDIA QUERIES */
+    @media screen and (max-width: 1050px) {
+        .formMarginLayout {
+            margin: 0 50px 0 50px;
+        }
+    }
+</style>
+
+<header class="navbar">
+    <!-- trademark -->
+    <div style="display: flex; align-items: center; gap: 10px">
+        <img class="logo" src="static/images/logo.png">
+        <h5 class="trademark" style="
+        text-wrap: nowrap;
+        color: var(--white-text-color);
+        font-weight: var(--content-font-weight)"
+        >MWO - {{title.upper()}}</h5>
+    </div>
+
+    <!-- links -->
+    <div style="display: flex; gap: 30px; justify-items: right">
+        <a href="/" class="linkBtn" id="homeBtn">Close</a>
+    </div>
+</header>
+
+<main class="contentArea">
+    <div class="content" style="margin-top: 100px">
+
+        <div class="formMarginLayout">
+            <!-- FORM TITLE -->
+            <h2 id="formTitle" style="font-family: Roboto-Bold, sans-serif; font-weight: normal; width: max-content">ADMIN LOGIN</h2>
+            <!-- LOGIN FORM -->
+            <div class="formContainer" id="loginForm">
+                <div class="formSectionContainer">
+                    <h5 class="formSectionHint">Password</h5>
+                    <input required minlength="8" id="password" type="password" name="password" placeholder="Enter your password" class="inputField">
+                    <a style="font-size: 13px; color: var(--primary-color); text-decoration: underline; margin-top: 5px; justify-self: flex-end; cursor: pointer" onclick="togglePage()">Change password</a>
+                </div>
+                <button onclick="authenticate()" class="submitButton">Login</button>
+            </div>
+
+            <!-- UPDATE FORM -->
+            <div class="formContainer" id="updateForm" style="display: none">
+                <div class="formSectionContainer">
+                    <!-- OLD PASSWORD -->
+                    <h5 class="formSectionHint">Old password</h5>
+                    <input required minlength="8" id="oldPassword" type="password" name="old_password" placeholder="Enter your old password" class="inputField">
+                    <!-- NEW PASSWORD-->
+                    <h5 class="formSectionHint">New password</h5>
+                    <input required minlength="8" id="newPassword" type="password" name="new_password" placeholder="Enter your new password" class="inputField">
+                    <!-- CONFIRM PASSWORD -->
+                    <h5 class="formSectionHint">Confirm password</h5>
+                    <input required minlength="8" id="confirmPassword" type="password" name="confirm_password" placeholder="Confirm your password" class="inputField">
+                    <a style="font-size: 13px; color: var(--primary-color); text-decoration: underline; margin-top: 5px; justify-self: flex-end; cursor: pointer;" onclick="togglePage()">Already have an account</a>
+                </div>
+                <button onclick="updatePassword()" class="submitButton">Login</button>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+    function authenticate(){
+        let password = document.getElementById("password").value;
+        if (password && password.length > 8) {
+            fetch('/password_authentication', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ password: password })
+            })
+            .then(response => {
+                if (response.ok) {
+
+                    /* Store token in cookies */
+                    response.json().then(
+                        data => {
+                            document.cookie = `admin_token=${data.token}; path=/; max-age=3600`; // Expires in 1 hour
+                        }
+                    )
+
+                    alert(`Login successful! Token saved`);
+                    window.location.href = "/admin";
+                } else {
+                    alert("Login failed! Incorrect password.");
+                }
+            });
+        }
+    }
+
+    function updatePassword(){
+        let oldPassword = document.getElementById("oldPassword").value;
+        let newPassword = document.getElementById("newPassword").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (newPassword !== confirmPassword) {
+            alert("New password and confirm password do not match!");
+            return;
+        }
+
+        fetch('/update_password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ old_password: oldPassword, new_password: newPassword })
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Password updated successfully! ");
+                togglePage();
+            } else {
+                alert("Password update failed! Incorrect old password.");
+            }
+        });
+    }
+
+    function togglePage(){
+        let loginForm = document.getElementById("loginForm");
+        let updateForm = document.getElementById("updateForm");
+        let formTitle = document.getElementById("formTitle");
+
+        if (loginForm.style.display === "none") {
+            loginForm.style.display = "grid";
+            updateForm.style.display = "none";
+            formTitle.innerText = "ADMIN LOGIN";
+        } else {
+            loginForm.style.display = "none";
+            updateForm.style.display = "grid";
+            formTitle.innerText = "UPDATE PASSWORD";
+        }
+    }
+</script>
+</body>
+</html>
